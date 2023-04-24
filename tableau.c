@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <conio.h>
 #include "tableau.h"
 
 #define size 12
+
+
 
 void build(char chessboard[size][size]){
     
@@ -33,6 +36,16 @@ void affichetab(char chessboard[size][size]){
 
 
     }
+}
+
+void choosepiece(char chessboard[size][size]){
+
+    
+
+    chessboard[5][9] = 'P';
+    chessboard[10][3] = 'P';
+    chessboard[7][2] = 'P';
+
 }
 
 /*
