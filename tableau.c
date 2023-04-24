@@ -23,6 +23,32 @@ void build(char chessboard[size][size]){
         chessboard[0][i] = 'k' -i;
     }
 
+    chessboard[1][0] = 'P';
+    chessboard[2][1] = 'P';
+    chessboard[3][2] = 'P';
+    chessboard[4][3] = 'P';
+
+    chessboard[6][1] = 'K';
+
+    chessboard[11][0] = 'P';
+    chessboard[10][1] = 'P';
+    chessboard[9][2] = 'P';
+    chessboard[8][3] = 'P';
+
+    chessboard[1][10] = 'P';
+    chessboard[2][9] = 'P';
+    chessboard[3][8] = 'P';
+    chessboard[4][7] = 'P';
+
+    chessboard[6][9] = 'K';
+
+    chessboard[11][10] = 'P';
+    chessboard[10][9] = 'P';
+    chessboard[9][8] = 'P';
+    chessboard[8][7] = 'P';
+
+
+
 }
 
 void affichetab(char chessboard[size][size]){
@@ -40,11 +66,9 @@ void affichetab(char chessboard[size][size]){
 
 void choosepiece(char chessboard[size][size]){
 
-    
 
-    chessboard[5][9] = 'P';
-    chessboard[10][3] = 'P';
-    chessboard[7][2] = 'P';
+
+
 
 }
 
