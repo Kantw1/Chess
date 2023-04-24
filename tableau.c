@@ -4,20 +4,20 @@
 
 #define size 12
 
-void build(char chessboard[size*2][size]){
+void build(char chessboard[size][size]){
     
     
     for(int i = 0; i<size; i++){
-        for(int j = 0; j<size*2; j++){
-            chessboard[j][i] = 'A';
+        for(int j = 0; j<size; j++){
+            chessboard[j][i] = ' ';
         }
     }
     
-    for(int i=1; i<size*2; i++){
-        chessboard[i][8] = 'A' + i -1;
+    for(int i=0; i<size; i++){
+        chessboard[i][11] = 'A' + i;
     }
     for(int i=0; i<size-1; i++){
-        chessboard[0][i] = '8' -i;
+        chessboard[0][i] = 'k' -i;
     }
 
 }
@@ -26,7 +26,7 @@ void affichetab(char chessboard[size][size]){
 
     for(int i = 0; i< size; i++){
         for(int j = 0; j<size; j++){
-            printf(" %c ", chessboard[j][i]);
+            printf("  %c  ", chessboard[j][i]);
         }
         printf("\n\n");
 
