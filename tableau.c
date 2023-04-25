@@ -35,17 +35,17 @@ void build(char chessboard[size][size]){
     chessboard[9][2] = 'P';
     chessboard[8][3] = 'P';
 
-    chessboard[1][10] = 'P';
-    chessboard[2][9] = 'P';
-    chessboard[3][8] = 'P';
-    chessboard[4][7] = 'P';
+    chessboard[1][10] = 'p';
+    chessboard[2][9] = 'p';
+    chessboard[3][8] = 'p';
+    chessboard[4][7] = 'p';
 
-    chessboard[6][9] = 'K';
+    chessboard[6][9] = 'k';
 
-    chessboard[11][10] = 'P';
-    chessboard[10][9] = 'P';
-    chessboard[9][8] = 'P';
-    chessboard[8][7] = 'P';
+    chessboard[11][10] = 'p';
+    chessboard[10][9] = 'p';
+    chessboard[9][8] = 'p';
+    chessboard[8][7] = 'p';
 
 
 
