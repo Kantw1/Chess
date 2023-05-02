@@ -30,6 +30,7 @@ void maj1(char a){
 void printchess(char chess[size][size]){
 
      HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+     system("cls || clear");
 
     int a = 0;
     int b = 0;
