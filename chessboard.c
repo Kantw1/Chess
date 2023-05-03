@@ -27,7 +27,7 @@ void maj1(char a){
     }
 }
 
-void printchess(char chess[size][size]){
+void printchess(char * chessboard){
 
      HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
      system("cls || clear");
@@ -40,7 +40,7 @@ void printchess(char chess[size][size]){
         for(int j = 0; j<= (size-1) *10+1; j++){
             if(j<1){
                 if((i-2)%4 == 0 && i>0){
-                printf("  %c  ",chess[0][a]);  
+                printf("  %c  ",*(chessboard+0+12*a));  
                 a++;
                 }
                 else {
@@ -55,7 +55,7 @@ void printchess(char chess[size][size]){
 
                     if((j-6)%10==0){
                         
-                        printf("%c",chess[b][size-1]);
+                        printf("%c",*(chessboard+b+12*(size-1)));
                         
                         b++;
                     }
@@ -69,7 +69,7 @@ void printchess(char chess[size][size]){
                         printf(" ");
                     }
                     else {
-                    maj1(chess[c][a-1]);
+                    maj1(*(chessboard+c+12*(a-1)));
                     c++;
                     }
                 }

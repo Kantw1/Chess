@@ -1,2 +1,2 @@
-void solde(char chessboard[size][size], int * pts, int joueur);
+void solde(char *chessboard, int * pts, int joueur);
 int informations(int pts);

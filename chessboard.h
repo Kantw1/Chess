@@ -1,3 +1,3 @@
 #define size 12
-void printchess(char chess[size][size]);
+void printchess(char * chessboard);
 void maj1(char a);

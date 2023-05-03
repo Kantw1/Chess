@@ -152,7 +152,7 @@ void roi(char chessboard[size][size],int i_debut,int i_fin,int j_debut,int j_fin
 
 int emplacement(char lettre){
 
-    int num;
+    int num = 0;
 
     if(lettre == 'A' || lettre == 'a'){
         num = 1;
