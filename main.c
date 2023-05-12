@@ -21,6 +21,8 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     ShowWindow(consoleWindow, SW_MAXIMIZE);
 
 
+
+
 /*[lignes][colonnes]*/
 char tab[size][size];
 char * chessboard = &tab[0][0];

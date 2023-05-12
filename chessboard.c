@@ -27,6 +27,33 @@ void maj1(char a){
     }
 }
 
+
+
+void letter_to_num(char lettre){
+
+    for(int i=0; i < 2; i++){
+        
+        if ( lettre == 'k'-i){
+
+            printf("     %d   ",11-i);
+
+
+        }
+
+    }
+
+    for(int i=2; i < size-1; i++){
+
+        if ( lettre == 'k'-i){
+
+            printf("      %d   ",11-i);
+
+
+        }
+
+    }
+}
+
 void printchess(char * chessboard){
 
      HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -40,11 +67,11 @@ void printchess(char * chessboard){
         for(int j = 0; j<= (size-1) *10+1; j++){
             if(j<1){
                 if((i-2)%4 == 0 && i>0){
-                printf("  %c  ",*(chessboard+0+12*a));  
+                letter_to_num(*(chessboard+0+12*a));  
                 a++;
                 }
                 else {
-                    printf("     ");
+                    printf("          ");
                 }
             }
             else if(i%4==0){

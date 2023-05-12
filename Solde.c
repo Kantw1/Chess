@@ -19,16 +19,16 @@ utiliser une fonction eche à l'interieur
 void position(char *chessboard, char piece_selectionne, int joueur){
 
     char lettre1 = 'b';
-    char lettre2 = 'b';
+    int nombre = 0;
     
     int ligne, colonne;
-    printf("indiquez la ligne de la case ou vous voulez mettre la piece\n");
+    printf("indiquez la colonne de la case ou vous voulez mettre la piece\n");
     scanf("\n%c",&lettre1);
-    printf("\nindiquez la colonne de la case ou vous voulez mettre la piece\n");
-    scanf("\n%c",&lettre2);
+    printf("\nindiquez la ligne de la case ou vous voulez mettre la piece\n");
+    scanf("\n%d",&nombre);
 
+    colonne = 11-nombre;
     ligne = emplacement(lettre1);
-    colonne = 11-emplacement(lettre2);
 
     if(joueur == 1){
 
