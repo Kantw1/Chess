@@ -14,6 +14,8 @@ une fonction solde() qui permet d'acheter les pièces en fonction du nombre de p
 une fonction buy() qui permet de lancer la fonction solde à tour de rôle et qui diminue le nombre de pts
 
 utiliser une fonction eche à l'interieur
+
+
 */
 
 void position(char *chessboard, char piece_selectionne, int joueur){
