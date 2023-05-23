@@ -154,7 +154,11 @@ while(*points_j1 + *points_j2 > 0){
         system("cls || clear");
         
 
+char exit;
+
 while(fin != 1 ){
+
+    exit ='b';
 
     if( j1 == 0){
 
@@ -188,13 +192,20 @@ while(fin != 1 ){
 
 fin = fin_de_partie(chessboard);
 
-if (fin != 1){
+
+printf("partir z\n");
+scanf("\n%c",&exit);
+if(exit == 'z'){
+    fin = 1;
+}
+
+/*if (fin != 1){
     printf("Voulez vous sauvegarder la partie? o? n?\n");
-    scanf("%c",sauvegarde);
+    scanf("\n%c",sauvegarde);
     if (sauvegarde == 'o'){
         fin = 1;
     }
-}
+}*/
 
 }
 
