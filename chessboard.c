@@ -5,24 +5,28 @@
 #include <ctype.h>
 
 #define size 12
+#define ANSI_COLOR_BLUE "\033[0;34m"
+#define ANSI_COLOR_RED "\033[0;31m"
+#define ANSI_COLOR_GREEN "\033[0;32m"
+#define ANSI_COLOR_RESET "\033[0m"
+
 /*    SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
     printf("%c", chess[c][a-1]);
     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);*/
 
 void maj1(char a){
 
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
     if( a == toupper(a)){
-        SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
+        printf(ANSI_COLOR_GREEN);
         printf("%c", a);
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+        printf(ANSI_COLOR_RESET);
     }
     else {
 
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+        printf(ANSI_COLOR_RED);
         printf("%c", a);
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+        printf(ANSI_COLOR_RESET);
 
     }
 }
@@ -56,7 +60,6 @@ void letter_to_num(char lettre){
 
 void printchess(char * chessboard){
 
-     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
      system("cls || clear");
 
     int a = 0;

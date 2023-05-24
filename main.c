@@ -10,21 +10,13 @@
 #include "Solde.h"
 
 #define size 12
+#define ANSI_COLOR_BLUE "\033[0;34m"
+#define ANSI_COLOR_RED "\033[0;31m"
+#define ANSI_COLOR_GREEN "\033[0;32m"
+#define ANSI_COLOR_RESET "\033[0m"
 
-
-
-/* creer une fonction à tour de role*/
 
 int main(){
-
-//permet de quitter le programme mais je ne sais pas encore comment le mettre en place
-/*void quit_if_stop(char input[]) {
-  if (strcmp(input, "stop") == 0) {
-    printf("Le programme a été interrompu.\n");
-    exit(0);
-  }
-}*/
-
 
   
 HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -34,10 +26,8 @@ HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
 system("cls || clear");
 
+printf(ANSI_COLOR_BLUE);
 
-
-
-    SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE);
 
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printf("   ******************   ******************   ******************   ******************   ***            ***    ******************   ***            ***   ******************   ******************   ******************\n");
@@ -60,7 +50,7 @@ system("cls || clear");
     printf("   ******************   ***          ***     **              **   ******************         ******          ******************   ***            ***   ******************   ******************   ******************\n");
 
 
-SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+printf(ANSI_COLOR_RESET);
 
 getch();
 system("cls || clear");
@@ -68,18 +58,18 @@ system("cls || clear");
 
 //regle du jeu
 
-SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+printf(ANSI_COLOR_RED);
 
 printf("\n\n\n\n\n\n					Ce jeux est une variante du jeux d'échec \n");
 printf("			Il se présente sur un echiquier de 11 * 11 et les regles sont différentes:\n");
 printf("			1. Vous allez tout d'abord devoir acheter les pieces avec lesquelles vous voulez jouer\n");
 printf("			2. Pour Gagner la partie vous allez devoir tout simplement manger le roi\n\n\n");
 
-SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
+printf(ANSI_COLOR_GREEN);
 
 printf("                    Bonne chance a vous !!!");
 
-SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+printf(ANSI_COLOR_RESET);
 
 
 getch();
@@ -108,9 +98,9 @@ int * points_j2 = &pts2;
 
 /*printf("%d\n", points_j1);*/
 
-        SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE);
+        printf(ANSI_COLOR_BLUE);
         printf("PERIODE D'ACHAT DES PIECES\n");
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+        printf(ANSI_COLOR_RESET);
 
 while(*points_j1 + *points_j2 > 0){
 
@@ -118,9 +108,9 @@ while(*points_j1 + *points_j2 > 0){
 
         if ( *points_j1 > 0){
 
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+        printf(ANSI_COLOR_RED);
         printf("AU TOUR DU JOUEUR 1\n\n");
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+        printf(ANSI_COLOR_RESET);
 
         solde(chessboard, points_j1, 1);
         printchess(chessboard);
@@ -132,9 +122,9 @@ while(*points_j1 + *points_j2 > 0){
 
         if(*points_j2 >0){
 
-            SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
+            printf(ANSI_COLOR_GREEN);
             printf("AU TOUR DU JOUEUR 2\n\n");
-            SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+            printf(ANSI_COLOR_RESET);
 
             solde(chessboard, points_j2, 2);
             printchess(chessboard);
@@ -146,9 +136,9 @@ while(*points_j1 + *points_j2 > 0){
     }
 }
         system("cls || clear");
-        SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE);
+        printf(ANSI_COLOR_BLUE);
         printf("VOUS ETES ENFIN PRET A JOUER\n\n");
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+        printf(ANSI_COLOR_RESET);
         printf("appuyer sur une touche pour continuer...");
         getch();
         system("cls || clear");
@@ -164,9 +154,9 @@ while(fin != 1 ){
 
         printchess(chessboard);
 
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
+        printf(ANSI_COLOR_RED);
         printf("AU TOUR DU JOUEUR 1\n\n");
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+        printf(ANSI_COLOR_RESET);
 
 
         selection_piece(chessboard);
@@ -178,9 +168,9 @@ while(fin != 1 ){
 
         printchess(chessboard);
 
-        SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
+        printf(ANSI_COLOR_GREEN);
         printf("AU TOUR DU JOUEUR 2\n\n");
-        SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+        printf(ANSI_COLOR_RESET);
 
         selection_piece(chessboard);
 
