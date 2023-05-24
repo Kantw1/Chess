@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "chessboard.h"
-#include <windows.h>
 #include <ctype.h>
 
 #define size 12

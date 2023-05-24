@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
 #include "tableau.h"
 #include "Moves.h"
 #include <ctype.h>

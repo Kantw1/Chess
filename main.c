@@ -8,6 +8,7 @@
 #include <ctype.h>
 #include "Moves.h"
 #include "Solde.h"
+#include "Save.h"
 
 #define size 12
 #define ANSI_COLOR_BLUE "\033[0;34m"
@@ -18,11 +19,19 @@
 
 int main(){
 
-  
-HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+/*
+#ifdef _WIN32 // Pour les systèmes Windows
+    system("mode con cols=120 lines=30");
+#elif __linux__ // Pour les systèmes Linux
+    system("printf '\\e[8;30;120t'");
+#elif __APPLE__ // Pour les systèmes macOS
+    system("printf '\\e[8;30;120t'");
+#else
+    // Système d'exploitation non pris en charge
+    printf("Impossible d'afficher la console en plein écran sur ce système d'exploitation.\n");
+#endif
+*/
 
-    HWND consoleWindow = GetConsoleWindow();
-    ShowWindow(consoleWindow, SW_MAXIMIZE);
 
 system("cls || clear");
 
@@ -81,22 +90,33 @@ system("cls || clear");
 char tab[size][size];
 char * chessboard = &tab[0][0];
 
-
-build(chessboard);
-
-/*affichetab(chessboard);*/
-printchess(chessboard);
-
 int j1 = 0;
 int fin = 0;
-char sauvegarde = 'n'; 
+char sauv = 'n'; 
 int pts1 = 40;
 int pts2 = 40;
 
 int * points_j1 = &pts1;
 int * points_j2 = &pts2;
 
-/*printf("%d\n", points_j1);*/
+
+FILE* f = fopen("save.txt","r");
+
+
+char charge = ' ';
+charge = fgetc(f);
+fclose(f);
+
+char info =' ';
+if(charge == 'k'){
+    printf("Voulez vous charger la sauvegarde precedente? o? n?\n");
+    scanf("\n%c",&info);
+}
+    if(info!='o'){
+
+build(chessboard);
+
+printchess(chessboard);
 
         printf(ANSI_COLOR_BLUE);
         printf("PERIODE D'ACHAT DES PIECES\n");
@@ -115,7 +135,6 @@ while(*points_j1 + *points_j2 > 0){
         solde(chessboard, points_j1, 1);
         printchess(chessboard);
         }
-
         j1 ++;
     }
     else {
@@ -128,13 +147,42 @@ while(*points_j1 + *points_j2 > 0){
 
             solde(chessboard, points_j2, 2);
             printchess(chessboard);
-
         }
 
             j1--;
-
     }
 }
+
+    }
+    else{
+
+    f = fopen("save.txt","r");
+
+    for(int i = 0; i<size; i++){
+        for(int j = 0; j<size; j++){
+
+        *(chessboard+i*size+j) = fgetc(f);
+
+        }
+    }
+    char joueur = fgetc(f);
+    if (joueur == '0'){
+        j1 = 0;
+    }
+    else{
+        j1 = 1;
+    }
+
+    }
+
+
+
+
+
+
+
+
+
         system("cls || clear");
         printf(ANSI_COLOR_BLUE);
         printf("VOUS ETES ENFIN PRET A JOUER\n\n");
@@ -144,11 +192,8 @@ while(*points_j1 + *points_j2 > 0){
         system("cls || clear");
         
 
-char exit;
-
 while(fin != 1 ){
 
-    exit ='b';
 
     if( j1 == 0){
 
@@ -159,8 +204,9 @@ while(fin != 1 ){
         printf(ANSI_COLOR_RESET);
 
 
-        selection_piece(chessboard);
-        
+        selection_piece(chessboard, j1);
+
+        printchess(chessboard);        
 
         j1 ++;
     }
@@ -172,7 +218,7 @@ while(fin != 1 ){
         printf("AU TOUR DU JOUEUR 2\n\n");
         printf(ANSI_COLOR_RESET);
 
-        selection_piece(chessboard);
+        selection_piece(chessboard, j1);
 
         printchess(chessboard);
 
@@ -183,19 +229,21 @@ while(fin != 1 ){
 fin = fin_de_partie(chessboard);
 
 
-printf("partir z\n");
-scanf("\n%c",&exit);
-if(exit == 'z'){
-    fin = 1;
-}
 
-/*if (fin != 1){
+if (fin != 1){
     printf("Voulez vous sauvegarder la partie? o? n?\n");
-    scanf("\n%c",sauvegarde);
-    if (sauvegarde == 'o'){
+    scanf("\n%c",&sauv);
+
+    if (sauv == 'o'){
+        printf("sauvegarde effectuee\n");
+        sauvegarde(chessboard,j1);
         fin = 1;
     }
-}*/
+}
+else{
+    fclose(f);
+    remove("save.txt");
+}
 
 }
 
