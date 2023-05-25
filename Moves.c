@@ -18,6 +18,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
 int verif_deplacement_droit(char* chessboard,int i1,int i2,int j1,int j2, int joueur);
 void promotion_pion(char* chessboard,char i2,char j2);
 void deplacement_pion_x2(char* chessboard,int i1,int i2,int j1,int j2, int joueur);
+void prince(char* chessboard,int i1,int i2,int j1,int j2, int joueur);
 
 
 
@@ -137,8 +138,8 @@ void reine(char* chessboard,int i1,int i2,int j1,int j2, int joueur){
     }
 }
 
-void roi(char* chessboard,int i1,int i2,int j1,int j2, int joueur){
-    if (i1+1==i2 || j1+1==j2 || i1-1==i2 || j1-1==j2){
+void roi(char* chessboard,char i1,char i2,char j1,char j2, int joueur){
+    if ((i2>=i1-1 && i2<=i1+1) && (j2>=j1-1 && j2<=j1+1)){
         if (*(chessboard+i1*12+j1)=='k'){
             int v=verif_deplacement_simple(chessboard,i1,i2,j1,j2,joueur);
             if (v==0){
@@ -147,7 +148,7 @@ void roi(char* chessboard,int i1,int i2,int j1,int j2, int joueur){
             }
         }
         else if (*(chessboard+i1*12+j1)=='K'){
-            int v=verif_deplacement_simple(chessboard,i1,i2,j1,j2,joueur);
+            int v=verif_deplacement_simple(chessboard,i1,i2,j1,j2, joueur);
             if (v==0){
                 *(chessboard+i2*12+j2)='K';
                 *(chessboard+i1*12+j1)=' ';
@@ -156,7 +157,7 @@ void roi(char* chessboard,int i1,int i2,int j1,int j2, int joueur){
     }
     else {
         printf("coup illegal,reessayez de deplacer une piece\n");
-        selection_piece(chessboard, joueur);
+        selection_piece(chessboard,joueur);
     }
 }
 
@@ -166,6 +167,57 @@ void cavalier_fou(char* chessboard,int i1,int i2,int j1,int j2, int joueur){
     if (*(chessboard+i1*12+j1)=='o','O'){
         printf("coup illegal,reessayez de deplacer une piece\n");
         selection_piece(chessboard, joueur);
+    }
+}
+
+void prince(char* chessboard,int i1,int i2,int j1,int j2, int joueur){
+    if ((i2>=i1-1 && i2<=i1+1) && (j2>=j1-1 && j2<=j1+1)){
+        if (*(chessboard+i1*12+j1)=='h'){
+            int v=verif_deplacement_simple(chessboard,i1,i2,j1,j2,joueur);
+            if (v==0){
+                *(chessboard+i2*12+j2)='h';
+                *(chessboard+i1*12+j1)=' ';
+            }
+        }
+        else if (*(chessboard+i1*12+j1)=='H'){
+            int v=verif_deplacement_simple(chessboard,i1,i2,j1,j2,joueur);
+            if (v==0){
+                *(chessboard+i2*12+j2)='H';
+                *(chessboard+i1*12+j1)=' ';
+            }
+        }
+    }
+    else if (((i2>=i1-2 && i2<=i1+2) && j1==j2) || (i1==i2 && (j2>=j1-2 && j2<=j1+2))){
+        if (*(chessboard+i1*12+j1)=='h'){
+            int v=verif_deplacement_droit(chessboard,i1,i2,j1,j2, joueur);
+            if (v==0){
+                *(chessboard+i2*12+j2)='h';
+                *(chessboard+i1*12+j1)=' ';
+            }
+        }
+        else if (*(chessboard+i1*12+j1)=='H'){
+            int v=verif_deplacement_droit(chessboard,i1,i2,j1,j2, joueur);
+            if (v==0){
+                *(chessboard+i2*12+j2)='H';
+                *(chessboard+i1*12+j1)=' ';
+            }
+        }
+    }
+    else if ((i2>=i1-2 && i2<=i1+2) && (j2>=j1-2 && j2<=j1+2)){
+        if (*(chessboard+i1*12+j1)=='h'){
+            int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2, joueur);
+            if (v==0){
+                *(chessboard+i2*12+j2)='h';
+                *(chessboard+i1*12+j1)=' ';
+            }
+        }
+        else if (*(chessboard+i1*12+j1)=='H'){
+            int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2, joueur);
+            if (v==0){
+                *(chessboard+i2*12+j2)='H';
+                *(chessboard+i1*12+j1)=' ';
+            }
+        }
     }
 }
 
@@ -190,87 +242,56 @@ void deplacement_ligne(char* chessboard,int i1,int i2,int j1,int j2, int joueur,
 }
 
 
-void deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, int joueur,char piece){
-    char i,j;
-    if(i1<i2 && j1<j2){
-       i=-(i2-i1);
-       j=-(j2-j1);
-       if (i==j){
-           if (piece=='f'||piece=='q'||piece=='o'){
-               int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2,joueur);
-               if (v==0){
-                   *(chessboard+i2*12+j2)=piece;
-                    *(chessboard+i1*12+j1)=' ';
-               }
-           }
-           else if (*(chessboard+i1*12+j1)=='F'||piece=='Q'||piece=='O'){
-               int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2,joueur);
-               if (v==0){
-                   *(chessboard+i2*12+j2)=piece;
-                    *(chessboard+i1*12+j1)=' ';
-               }
-           }
-       }
+void deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2,int joueur, char piece){
+    int i=i2-i1;
+    int j=j2-j1;
+    if (i==j){
+        if (*(chessboard+i1*12+j1)=='f' || *(chessboard+i1*12+j1)=='q' || *(chessboard+i1*12+j1)=='o'){
+            int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2,joueur);
+            if (v==0){
+                *(chessboard+i2*12+j2)=piece;
+                *(chessboard+i1*12+j1)=' ';
+            }
+        }
+        else if (*(chessboard+i1*12+j1)=='F' || *(chessboard+i1*12+j1)=='Q' || *(chessboard+i1*12+j1)=='O'){
+            int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2,joueur);
+            if (v==0){
+                *(chessboard+i2*12+j2)=piece;
+                *(chessboard+i1*12+j1)=' ';
+            }
+        }
     }
-    if(i1<i2 && j1>j2){
-       i=-(i2-i1);
-       j=j2-j1;
-       if (i==j){
-           if (piece=='f'||piece=='q'||piece=='o'){
-               int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2,joueur);
-               if (v==0){
-                   *(chessboard+i2*12+j2)=piece;
-                    *(chessboard+i1*12+j1)=' ';
-               }
-           }
-           else if (piece=='F'||piece=='Q'||piece=='O'){
-               int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2,joueur);
-               if (v==0){
-                   *(chessboard+i2*12+j2)=piece;
-                    *(chessboard+i1*12+j1)=' ';
-               }
-           }
-       }
+    if (i==(-j)){
+        if (*(chessboard+i1*12+j1)=='f' || *(chessboard+i1*12+j1)=='q' || *(chessboard+i1*12+j1)=='o'){
+            int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2, joueur);
+            if (v==0){
+                *(chessboard+i2*12+j2)=piece;
+                *(chessboard+i1*12+j1)=' ';
+            }
+        }
+        else if (*(chessboard+i1*12+j1)=='F' || *(chessboard+i1*12+j1)=='Q' || *(chessboard+i1*12+j1)=='O'){
+            int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2, joueur);
+            if (v==0){
+                *(chessboard+i2*12+j2)=piece;
+                *(chessboard+i1*12+j1)=' ';
+            }
+        }
     }
-    if(i1>i2 && j1>j2){
-       i=i2-i1;
-       j=j2-j1;
-       if (i==j){
-           if (piece=='f'||piece=='q'||piece=='o'){
-               int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2,joueur);
-               if (v==0){
-                   *(chessboard+i2*12+j2)=piece;
-                    *(chessboard+i1*12+j1)=' ';
-               }
-           }
-           else if (piece=='F'||piece=='Q'||piece=='O'){
-               int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2,joueur);
-               if (v==0){
-                   *(chessboard+i2*12+j2)=piece;
-                    *(chessboard+i1*12+j1)=' ';
-               }
-           }
-       }
-    }
-    if(i1>i2 && j1<j2){
-       i=i2-i1;
-       j=-(j2-j1);
-       if (i==j){
-           if (piece=='f'||piece=='q'||piece=='o'){
-               int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2,joueur);
-               if (v==0){
-                   *(chessboard+i2*12+j2)=piece;
-                    *(chessboard+i1*12+j1)=' ';
-               }
-           }
-           else if (piece=='F'||piece=='Q'||piece=='O'){
-               int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2,joueur);
-               if (v==0){
-                   *(chessboard+i2*12+j2)=piece;
-                    *(chessboard+i1*12+j1)=' ';
-               }
-           }
-       }
+    if ((-i)==j){
+        if (*(chessboard+i1*12+j1)=='f' || *(chessboard+i1*12+j1)=='q' || *(chessboard+i1*12+j1)=='o'){
+            int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2, joueur);
+            if (v==0){
+                *(chessboard+i2*12+j2)=piece;
+                *(chessboard+i1*12+j1)=' ';
+            }
+        }
+        else if (*(chessboard+i1*12+j1)=='F' || *(chessboard+i1*12+j1)=='Q' || *(chessboard+i1*12+j1)=='O'){
+            int v=verif_deplacement_diagonale(chessboard,i1,i2,j1,j2, joueur);
+            if (v==0){
+                *(chessboard+i2*12+j2)=piece;
+                *(chessboard+i1*12+j1)=' ';
+            }
+        }
     }
 }
 
@@ -346,8 +367,8 @@ void deplacement_en_L(char* chessboard,int i1,int i2,int j1,int j2, int joueur,c
 int verif_deplacement_simple(char* chessboard,int i1,int i2,int j1,int j2, int joueur){
     char piece[9];
     char piece2[9];
-    strcpy(piece,"pktcfqol");
-    strcpy(piece2,"PKTCFQOL");
+    strcpy(piece,"pktcfqoh");
+    strcpy(piece2,"PKTCFQOH");
     if (*(chessboard+i1*12+j1)=='p' ||*(chessboard+i1*12+j1)=='c' ||*(chessboard+i1*12+j1)=='k'){
         for (int i=0;i<9;i++){
             if (*(chessboard+i2*12+j2)==piece[i]){
@@ -381,14 +402,16 @@ int verif_deplacement_simple(char* chessboard,int i1,int i2,int j1,int j2, int j
 int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, int joueur){
     char piece[9];
     char piece2[9];
-    strcpy(piece,"pktcfqol");
-    strcpy(piece2,"PKTCFQOL");
-    if (i1<i2 && j1<j2){
-        if (*(chessboard+i1*12+j1)=='f'||*(chessboard+i1*12+j1)=='q'||*(chessboard+i1*12+j1)=='o'){
+    strcpy(piece,"pktcfqoh");
+    strcpy(piece2,"PKTCFQOH");
+    int i=i2-i1;
+    int j=j2-j1;
+    if (i==j && i>0){
+        if (*(chessboard+i1+j1*12)=='f'||*(chessboard+i1+j1*12)=='q'||*(chessboard+i1+j1*12)=='o'){
             int i,j;
             for (i=i1+1,j=j1+1;i<i2,j<j2;i++,j++){
                 for (int i0=0;i0<9;i++){
-                    if (*(chessboard+i+j*12)==piece[i0] ||*(chessboard+i+j*12)==piece2[i0]){
+                    if (*(chessboard+i*12+j)==piece[i0] || *(chessboard+i*12+j)==piece2[i0]){
                         printf("coup illegal,reessayez de deplacer une piece\n");
                         selection_piece(chessboard, joueur);
                         return 1;
@@ -403,11 +426,11 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
                 }
             }
         }
-        else if (*(chessboard+i1+j1+12)=='F','Q','O'){
+        else if (*(chessboard+i1+j1+12)=='F'||*(chessboard+i1+j1*12)=='Q'||*(chessboard+i1+j1*12)=='O'){
             int i,j;
             for (i=i1+1,j=j1+1;i<i2,j<j2;i++,j++){
                 for (int i0=0;i0<9;i++){
-                    if (*(chessboard+i+j*12)==piece[i0] ||*(chessboard+i+j*12)==piece2[i0]){
+                    if (*(chessboard+i*12+j)==piece[i0] || *(chessboard+i*12+j)==piece2[i0]){
                         printf("coup illegal,reessayez de deplacer une piece\n");
                         selection_piece(chessboard, joueur);
                         return 1;
@@ -415,7 +438,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
                 }
             }
             for (int i=0;i<9;i++){
-                if (*(chessboard+i2*12+j2)==piece[i]){
+                if (*(chessboard+i2*12+j2)==piece2[i]){
                    printf("coup illegal,reessayez de deplacer une piece\n");
                    selection_piece(chessboard, joueur);
                    return 1;
@@ -423,12 +446,12 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
             }
         }
     }    
-    else if (i1<i2 && j1>j2){
-        if (*(chessboard+i1*12+j1)=='f'||*(chessboard+i1*12+j1)=='q'||*(chessboard+i1*12+j1)=='o'){
+    else if (i==(-j)){
+        if (*(chessboard+i1+j1*12)=='f'||*(chessboard+i1+j1*12)=='q'||*(chessboard+i1+j1*12)=='o'){
             int i,j;
             for (i=i1+1,j=j1-1;i<i2,j>j2;i++,j--){
                 for (int i0=0;i0<9;i++){
-                    if (*(chessboard+i+j*12)==piece[i0] ||*(chessboard+i+j*12)==piece2[i0]){
+                    if (*(chessboard+i*12+j)==piece[i0] || *(chessboard+i*12+j)==piece2[i0]){
                         printf("coup illegal,reessayez de deplacer une piece\n");
                         selection_piece(chessboard, joueur);
                         return 1;
@@ -443,11 +466,11 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
                 }
             }
         }
-        else if (*(chessboard+i1+j1+12)=='F','Q','O'){
+        else if (*(chessboard+i1+j1+12)=='F'||*(chessboard+i1+j1*12)=='Q'||*(chessboard+i1+j1*12)=='O'){
             int i,j;
             for (i=i1+1,j=j1-1;i<i2,j>j2;i++,j--){
                 for (int i0=0;i0<9;i++){
-                    if (*(chessboard+i+j*12)==piece[i0]||*(chessboard+i+j*12)==piece2[i0]){
+                    if (*(chessboard+i*12+j)==piece[i0] || *(chessboard+i*12+j)==piece2[i0]){
                         printf("coup illegal,reessayez de deplacer une piece\n");
                         selection_piece(chessboard, joueur);
                         return 1;
@@ -464,12 +487,12 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
         } 
     }   
     
-    else if (i1>i2 && j1>j2){
-        if (*(chessboard+i1*12+j1)=='f'||*(chessboard+i1*12+j1)=='q'||*(chessboard+i1*12+j1)=='o'){
+    else if (i==j && i<0){
+        if (*(chessboard+i1+j1*12)=='f'||*(chessboard+i1+j1*12)=='q'||*(chessboard+i1+j1*12)=='o'){
             int i,j;
             for (i=i1-1,j=j1-1;i>i2,j>j2;i--,j--){
                 for (int i0=0;i0<9;i++){
-                    if (*(chessboard+i+j*12)==piece[i0]||*(chessboard+i+j*12)==piece2[i0]){
+                    if (*(chessboard+i*12+j)==piece[i0] || *(chessboard+i*12+j)==piece2[i0]){
                         printf("coup illegal,reessayez de deplacer une piece\n");
                         selection_piece(chessboard, joueur);
                         return 1;
@@ -484,11 +507,11 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
                 }
             }
         }
-        else if (*(chessboard+i1+j1+12)=='F','Q','O'){
+        else if (*(chessboard+i1+j1+12)=='F'||*(chessboard+i1+j1*12)=='Q'||*(chessboard+i1+j1*12)=='O'){
             int i,j;
             for (i=i1-1,j=j1-1;i>i2,j>j2;i--,j--){
                 for (int i0=0;i0<9;i++){
-                    if (*(chessboard+i+j*12)==piece[i0]||*(chessboard+i+j*12)==piece2[i0]){
+                    if (*(chessboard+i*12+j)==piece[i0] || *(chessboard+i*12+j)==piece2[i0]){
                         printf("coup illegal,reessayez de deplacer une piece\n");
                         selection_piece(chessboard, joueur);
                         return 1;
@@ -505,12 +528,12 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
         }
     }
     
-    else if (i1>i2 && j1<j2){
-        if (*(chessboard+i1*12+j1)=='f'||*(chessboard+i1*12+j1)=='q'||*(chessboard+i1*12+j1)=='o'){
+    else if ((-i)==j){
+        if (*(chessboard+i1+j1*12)=='f'||*(chessboard+i1+j1*12)=='q'||*(chessboard+i1+j1*12)=='o'){
             int i,j;
             for (i=i1-1,j=j1+1;i>i2,j<j2;i--,j++){
                 for (int i0=0;i0<9;i++){
-                    if (*(chessboard+i+j*12)==piece[i0]||*(chessboard+i+j*12)==piece2[i0]){
+                    if (*(chessboard+i*12+j)==piece[i0] || *(chessboard+i*12+j)==piece2[i0]){
                         printf("coup illegal,reessayez de deplacer une piece\n");
                         selection_piece(chessboard, joueur);
                         return 1;
@@ -525,11 +548,11 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
                 }
             }
         }
-        else if (*(chessboard+i1+j1+12)=='F','Q','O'){
+        else if (*(chessboard+i1+j1+12)=='F'||*(chessboard+i1+j1*12)=='Q'||*(chessboard+i1+j1*12)=='O'){
             int i,j;
             for (i=i1-1,j=j1+1;i>i2,j<j2;i--,j++){
                 for (int i0=0;i0<9;i++){
-                    if (*(chessboard+i+j*12)==piece[i0] ||*(chessboard+i+j*12)==piece2[i0]){
+                    if (*(chessboard+i*12+j)==piece[i0] || *(chessboard+i*12+j)==piece2[i0]){
                         printf("coup illegal,reessayez de deplacer une piece\n");
                         selection_piece(chessboard, joueur);
                         return 1;
@@ -545,7 +568,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
             }
         }
     }
-    if (i2>11 || j2>11){
+    if (i2>10 || j2>11){
         printf("coup illegal,reessayez de deplacer une piece\n");
         selection_piece(chessboard, joueur);
         return 1;
@@ -556,8 +579,8 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
 int verif_deplacement_droit(char* chessboard,int i1,int i2,int j1,int j2, int joueur){
     char piece[9];
     char piece2[9];
-    strcpy(piece,"pktcfqol");
-    strcpy(piece2,"PKTCFQOL");
+    strcpy(piece,"pktcfqoh");
+    strcpy(piece2,"PKTCFQOH");
     if (i2>i1){
         if(*(chessboard+i1*12+j1)=='t' || *(chessboard+i1*12+j1)=='q' || *(chessboard+i1*12+j1)=='l'){
             for (int i=i1+1;i<i2;i++){
@@ -787,9 +810,9 @@ void selection_piece(char* chessboard, int joueur){
     else if (*(chessboard+i_debut*12+j_debut)=='o'|| *(chessboard+i_debut*12+j_debut)=='O'){
         cavalier_fou(chessboard,i_debut,i_fin,j_debut,j_fin,joueur);
     }
-    /*else if (*(chessboard+i_debut*12+j_debut)=='h'|| *(chessboard+i_debut*12+j_debut)=='H'){
+    else if (*(chessboard+i_debut*12+j_debut)=='h'|| *(chessboard+i_debut*12+j_debut)=='H'){
         prince(chessboard,i_debut,i_fin,j_debut,j_fin,joueur);
-    }*/
+    }
     else{
         printf("il n'y a pas de piece ici\n\n");
         selection_piece(chessboard, joueur);
