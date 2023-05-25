@@ -9,6 +9,7 @@
 #include "Moves.h"
 #include "Solde.h"
 #include "Save.h"
+#include "echec.h"
 
 #define size 12
 #define ANSI_COLOR_BLUE "\033[0;34m"
@@ -122,30 +123,32 @@ printchess(chessboard);
         printf("PERIODE D'ACHAT DES PIECES\n");
         printf(ANSI_COLOR_RESET);
 
-while(*points_j1 + *points_j2 > 0){
+while(*points_j1 >2 || *points_j2 > 2){
 
     if( j1 == 0){
 
-        if ( *points_j1 > 0){
+        if ( *points_j1 > 2){
 
         printf(ANSI_COLOR_RED);
         printf("AU TOUR DU JOUEUR 1\n\n");
         printf(ANSI_COLOR_RESET);
 
         solde(chessboard, points_j1, 1);
+        echec_de_depart(chessboard, points_j1,1);
         printchess(chessboard);
         }
         j1 ++;
     }
     else {
 
-        if(*points_j2 >0){
+        if(*points_j2 >2){
 
             printf(ANSI_COLOR_GREEN);
             printf("AU TOUR DU JOUEUR 2\n\n");
             printf(ANSI_COLOR_RESET);
 
             solde(chessboard, points_j2, 2);
+            echec_de_depart(chessboard, points_j2,2);
             printchess(chessboard);
         }
 

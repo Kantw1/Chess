@@ -3,9 +3,6 @@
 #include "tableau.h"
 
 #define size 12
-
-
-
 void build(char *chessboard){
     
     

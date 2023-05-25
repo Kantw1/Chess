@@ -1,0 +1,1 @@
+void echec_de_depart(char* chessboard,int* points_j1,int joueur);

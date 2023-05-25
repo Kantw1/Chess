@@ -16,17 +16,25 @@ utiliser une fonction eche à l'interieur
 
 
 */
+void vide_buffer(){
+    while(getchar()!='\n'){
+    }
+}
 
 void position(char *chessboard, char piece_selectionne, int joueur){
 
     char lettre1 = 'b';
     int nombre = 0;
+    int verif;
     
     int ligne, colonne;
     printf("indiquez la colonne de la case ou vous voulez mettre la piece\n");
     scanf("\n%c",&lettre1);
+    do{
     printf("\nindiquez la ligne de la case ou vous voulez mettre la piece\n");
-    scanf("\n%d",&nombre);
+    verif =scanf("\n%d",&nombre);
+    vide_buffer();
+    }while(verif !=1);
 
     colonne = 11-nombre;
     ligne = emplacement(lettre1);
@@ -110,32 +118,32 @@ void solde(char *chessboard, int * pts, int joueur){
 
         piece_selectionne = tolower(piece_selectionne);
 
-        if ( piece_selectionne == 'q'){
+        if ( piece_selectionne == 'q' && *pts>9){
 
             *pts = *pts - 10;
              position(chessboard, piece_selectionne, joueur);
         }
-        else if ( piece_selectionne == 'c'){
+        else if ( piece_selectionne == 'c'&& *pts>3){
 
             *pts = *pts - 3;
             position(chessboard, piece_selectionne, joueur);
         }
-        else if ( piece_selectionne == 'f'){
+        else if ( piece_selectionne == 'f'&& *pts>3){
 
             *pts = *pts - 3;
             position(chessboard, piece_selectionne, joueur);
         }
-        else if ( piece_selectionne == 't'){
+        else if ( piece_selectionne == 't'&& *pts>5){
             
             *pts = *pts - 5;
             position(chessboard, piece_selectionne, joueur);
         }
-        else if ( piece_selectionne == 'o'){
+        else if ( piece_selectionne == 'o'&& *pts>7){
             
             *pts = *pts - 7;
             position(chessboard, piece_selectionne, joueur);
         }
-        else if ( piece_selectionne == 'h'){
+        else if ( piece_selectionne == 'h'&& *pts>6){
 
             *pts = *pts - 6;
             position(chessboard, piece_selectionne, joueur);
@@ -157,32 +165,32 @@ void solde(char *chessboard, int * pts, int joueur){
         piece_selectionne = toupper(piece_selectionne);
 
 
-        if ( piece_selectionne == 'Q'){
+        if ( piece_selectionne == 'Q'&& *pts>9){
 
             *pts = *pts - 10;
             position(chessboard, piece_selectionne, joueur);
         }
-        else if ( piece_selectionne == 'C'){
+        else if ( piece_selectionne == 'C'&& *pts>3){
 
             *pts = *pts - 3;
             position(chessboard, piece_selectionne, joueur);
         }
-        else if ( piece_selectionne == 'F'){
+        else if ( piece_selectionne == 'F'&& *pts>3){
 
             *pts = *pts - 3;
             position(chessboard, piece_selectionne, joueur);
         }
-        else if ( piece_selectionne == 'T'){
+        else if ( piece_selectionne == 'T'&& *pts>5){
             
             *pts = *pts - 5;
             position(chessboard, piece_selectionne, joueur);
         }
-        else if ( piece_selectionne == 'O'){
+        else if ( piece_selectionne == 'O'&& *pts>7){
             
             *pts = *pts - 7;
             position(chessboard, piece_selectionne, joueur);
         }
-        else if ( piece_selectionne == 'H'){
+        else if ( piece_selectionne == 'H'&& *pts>6){
 
             *pts = *pts - 6;
             position(chessboard, piece_selectionne, joueur);
