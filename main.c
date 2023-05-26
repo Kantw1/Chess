@@ -19,7 +19,7 @@
 
 int main(){
 
-
+char getch;
 
 
 system("cls || clear");
@@ -50,7 +50,7 @@ printf(ANSI_COLOR_BLUE);
 
 printf(ANSI_COLOR_RESET);
 
-getche(); //attend que le joueur utilise la touche entree
+scanf("%c",&getch); //attend que le joueur utilise la touche entree
 system("cls || clear");
 
 
@@ -70,7 +70,7 @@ printf("                    Bonne chance a vous !!!");
 printf(ANSI_COLOR_RESET);
 
 
-getche();
+scanf("%c",&getch);
 system("cls || clear");
 
 
@@ -179,7 +179,7 @@ while(*points_j1 >2 || *points_j2 > 2){
         printf("VOUS ETES ENFIN PRET A JOUER\n\n");
         printf(ANSI_COLOR_RESET);
         printf("appuyer sur une touche pour continuer...");
-        getche();
+        scanf("%c",&getch);
         system("cls || clear");
         
 
@@ -240,7 +240,7 @@ else{
 
 
 
-getche();
+scanf("%c",&getch);
 
 
     return 0;
