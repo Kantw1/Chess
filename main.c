@@ -8,7 +8,6 @@
 #include "Solde.h"
 #include "Save.h"
 #include "echec.h"
-#include <conio.h>
 
 #define size 12
 #define ANSI_COLOR_BLUE "\033[0;34m"
@@ -28,25 +27,29 @@ printf(ANSI_COLOR_BLUE);
 
 
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    printf("   ******************   ******************   ******************   ******************   ***            ***    ******************   ***            ***   ******************   ******************   ******************\n");
-    printf("   ******************   ******************   ******************   ******************   ***            ***    ******************   ***            ***   ******************   ******************   ******************\n");
-    printf("   ****                 ***             **   **              **                 ***     ***          ***     ****                 ***            ***   ***                  ***                  ***               \n");
-    printf("   ****                 ***             **   **              **                ***       ***        ***      ****                 ***            ***   ***                  ***                  ***               \n");
-    printf("   ****                 ***             **   **              **               ***         ***      ***       ****                 ***            ***   ***                  ***                  ***               \n");
-    printf("   ****                 ***             **   **              **              ***           ***    ***        ****                 ***            ***   ***                  ***                  ***               \n");
-    printf("   ****                 ***             **   **              **             ***             ***  ***         ****                 ***            ***   ***                  ***                  ***               \n");
-    printf("   ****                 ******************   ******************            ***               ******          ****                 ***            ***   ***                  ***                  ***               \n");
-    printf("   ****                 ******************   ******************           ***                 ****           ****                 ******************   ****************     ******************   ******************\n");
-    printf("   ****                 ***  ***             **              **          ***                  ****           ****                 ******************   ****************     ******************   ******************\n");
-    printf("   ****                 ***   ***            **                         ***                   ****           ****                 ***            ***   ***                                 ***                  ***\n");
-    printf("   ****                 ***    ***           **              **        ***                    ****           ****                 ***            ***   ***                                 ***                  ***\n");
-    printf("   ****                 ***     ***          **              **       ***                     ****           ****                 ***            ***   ***                                 ***                  ***\n");
-    printf("   ****                 ***      ***         **              **      ***                      ****           ****                 ***            ***   ***                                 ***                  ***\n");
-    printf("   ****                 ***       ***        **              **     ***                       ****           ****                 ***            ***   ***                                 ***                  ***\n");
-    printf("   ****                 ***        ***       **              **    ***                        ****           ****                 ***            ***   ***                                 ***                  ***\n");
-    printf("   ******************   ***         ***      **              **   ******************         ******          ******************   ***            ***   ******************   ******************   ******************\n");
-    printf("   ******************   ***          ***     **              **   ******************         ******          ******************   ***            ***   ******************   ******************   ******************\n");
+    printf("              ******************   ******************   ******************   ******************   ***            ***    \n");
+    printf("              ****                 ***             **   **              **                ***       ***        ***      \n");
+    printf("              ****                 ***             **   **              **              ***           ***    ***        \n");
+    printf("              ****                 ***             **   **              **             ***             ***  ***         \n");
+    printf("              ****                 ******************   ******************            ***               ******          \n");
+    printf("              ****                 ***  ***             **              **          ***                  ****           \n");
+    printf("              ****                 ***   ***            **                         ***                   ****           \n");
+    printf("              ****                 ***      ***         **              **      ***                      ****           \n");
+    printf("              ****                 ***        ***       **              **    ***                        ****           \n");
+    printf("              ******************   ***         ***      **              **   ******************         ******          \n");
 
+    printf("\n\n");
+
+    printf("              ******************   ***            ***   ******************   ******************   ******************\n");
+    printf("              ****                 ***            ***   ***                  ***                  ***               \n");
+    printf("              ****                 ***            ***   ***                  ***                  ***               \n");
+    printf("              ****                 ***            ***   ***                  ***                  ***               \n");
+    printf("              ****                 ***            ***   ***                  ***                  ***               \n");
+    printf("              ****                 ******************   ****************     ******************   ******************\n");
+    printf("              ****                 ***            ***   ***                                 ***                  ***\n");
+    printf("              ****                 ***            ***   ***                                 ***                  ***\n");
+    printf("              ****                 ***            ***   ***                                 ***                  ***\n");
+    printf("              ******************   ***            ***   ******************   ******************   ******************\n");
 
 printf(ANSI_COLOR_RESET);
 
@@ -58,17 +61,25 @@ system("cls || clear");
 
 printf(ANSI_COLOR_RED);
 
-printf("\n\n\n\n\n\n					Ce jeux est une variante du jeux d'échec \n");
-printf("			Il se présente sur un echiquier de 11 * 11 et les regles sont différentes:\n");
+printf("\n\n\n\n\n\n					Ce jeux est une variante du jeux d'echec \n");
+printf("			Il se presente sur un echiquier de 11 * 11 et les regles sont differentes:\n");
 printf("			1. Vous allez tout d'abord devoir acheter les pieces avec lesquelles vous voulez jouer\n");
-printf("			2. Pour Gagner la partie vous allez devoir tout simplement manger le roi\n\n\n");
+printf("			2. Pour Gagner la partie vous allez devoir tout simplement manger le roi\n");
+printf("            3. deux types de pieces sont deja preposes : le roi --> k et le pion --> p \n\n");
+printf("            4. La tour et la reine ne peuvent pas etre poser en face du roi adverse si cela genere une situation d'echec.\n\n");
 
 printf(ANSI_COLOR_GREEN);
 
-printf("                    Bonne chance a vous !!!");
+printf("                    Bonne chance a vous !!!\n");
 
 printf(ANSI_COLOR_RESET);
 
+printf("    .-.    \n");
+printf("   (_O_)   \n");
+printf("    |=|    \n");
+printf("    |=|    \n");
+printf("  __|=|__  \n");
+printf(" (_______) \n");
 
 scanf("%c",&getch);
 system("cls || clear");
