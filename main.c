@@ -3,12 +3,12 @@
 #include <string.h>
 #include "chessboard.h"
 #include "tableau.h"
-#include <windows.h>
 #include <ctype.h>
 #include "Moves.h"
 #include "Solde.h"
 #include "Save.h"
 #include "echec.h"
+#include <conio.h>
 
 #define size 12
 #define ANSI_COLOR_BLUE "\033[0;34m"
@@ -19,22 +19,6 @@
 
 int main(){
 
-
-#ifdef _WIN32 // Pour les systèmes Windows
-    //system("mode con cols=120 lines=30");
-    #include <conio.h>
-    #include <windows.h>
-    HWND consoleWindow = GetConsoleWindow();
-    ShowWindow(consoleWindow, SW_MAXIMIZE);
-#elif __linux__ // Pour les systèmes Linux
-    #include <ncurses.h>
-    system("printf '\\e[8;30;120t'");
-#elif __APPLE__ // Pour les systèmes macOS
-    system("printf '\\e[8;30;120t'");
-#else
-    // Système d'exploitation non pris en charge
-    printf("Impossible d'afficher la console en plein écran sur ce système d'exploitation.\n");
-#endif
 
 
 
@@ -66,7 +50,7 @@ printf(ANSI_COLOR_BLUE);
 
 printf(ANSI_COLOR_RESET);
 
-getch(); //attend que le joueur utilise la touche entree
+getche(); //attend que le joueur utilise la touche entree
 system("cls || clear");
 
 
@@ -86,7 +70,7 @@ printf("                    Bonne chance a vous !!!");
 printf(ANSI_COLOR_RESET);
 
 
-getch();
+getche();
 system("cls || clear");
 
 
@@ -195,7 +179,7 @@ while(*points_j1 >2 || *points_j2 > 2){
         printf("VOUS ETES ENFIN PRET A JOUER\n\n");
         printf(ANSI_COLOR_RESET);
         printf("appuyer sur une touche pour continuer...");
-        getch();
+        getche();
         system("cls || clear");
         
 
@@ -256,7 +240,7 @@ else{
 
 
 
-getch();
+getche();
 
 
     return 0;

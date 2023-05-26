@@ -414,7 +414,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
         if (*(chessboard+i1*size+j1)=='f' || *(chessboard+i1*size+j1)=='q' || *(chessboard+i1*size+j1)=='o' || *(chessboard+i1*size+j1)=='h'){
             while (i1<i2-1 || j1<j2-1){
                 if (*(chessboard+(i1+1)*size+(j1+1))!=' '){
-                    printf("1coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -423,7 +423,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
             }
             for(int i=0;i<9;i++){
                 if (*(chessboard+i2*size+j2)==piece[i]){
-                    printf("2coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -432,7 +432,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
         else if (*(chessboard+i1*size+j1)=='F' || *(chessboard+i1*size+j1)=='Q' || *(chessboard+i1*size+j1)=='O' || *(chessboard+i1*size+j1)=='H'){
             while (i1<i2-1 || j1<j2-1){
                 if (*(chessboard+(i1+1)*size+(j1+1))!=' '){
-                    printf("3coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -441,7 +441,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
             }
             for(int i=0;i<9;i++){
                 if (*(chessboard+i2*size+j2)==piece2[i]){
-                    printf("4coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -452,7 +452,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
         if (*(chessboard+i1*size+j1)=='f' || *(chessboard+i1*size+j1)=='q' || *(chessboard+i1*size+j1)=='o' || *(chessboard+i1*size+j1)=='h'){
             while (i1<i2-1 || j1>j2+1){
                 if (*(chessboard+(i1+1)*size+(j1-1))!=' '){
-                    printf("5coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -461,7 +461,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
             }
             for(int i=0;i<9;i++){
                 if (*(chessboard+i2*size+j2)==piece[i]){
-                    printf("6coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -470,7 +470,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
         else if (*(chessboard+i1*size+j1)=='F' || *(chessboard+i1*size+j1)=='Q' || *(chessboard+i1*size+j1)=='O' ||*(chessboard+i1*size+j1)=='H'){
             while (i1<i2-1 || j1>j2+1){
                 if (*(chessboard+(i1+1)*size+(j1-1))!=' '){
-                    printf("7coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -479,7 +479,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
             }
             for(int i=0;i<9;i++){
                 if (*(chessboard+i2*size+j2)==piece2[i]){
-                    printf("8coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -490,7 +490,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
         if (*(chessboard+i1*size+j1)=='f' || *(chessboard+i1*size+j1)=='q' || *(chessboard+i1*size+j1)=='o'|| *(chessboard+i1*size+j1)=='h'){
             while (i1>i2+1|| j1>j2+1){
                 if (*(chessboard+(i1-1)*size+(j1-1))!=' '){
-                    printf("9coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -499,7 +499,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
             }
             for(int i=0;i<9;i++){
                 if (*(chessboard+i2*size+j2)==piece[i]){
-                    printf("10coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -508,7 +508,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
         else if (*(chessboard+i1*size+j1)=='F' || *(chessboard+i1*size+j1)=='Q' || *(chessboard+i1*size+j1)=='O' ||*(chessboard+i1*size+j1)=='H'){
             while (i1>i2+1 || j1>j2+1){
                 if (*(chessboard+(i1-1)*size+(j1-1))!=' '){
-                    printf("11coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -517,7 +517,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
             }
             for(int i=0;i<9;i++){
                 if (*(chessboard+i2*size+j2)==piece2[i]){
-                    printf("sizecoup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -528,7 +528,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
         if (*(chessboard+i1*size+j1)=='f' || *(chessboard+i1*size+j1)=='q' || *(chessboard+i1*size+j1)=='o'|| *(chessboard+i1*size+j1)=='h'){
             while (i1>i2+1 || j1<j2-1){
                 if (*(chessboard+(i1-1)*size+(j1+1))!=' '){
-                    printf("13coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -537,7 +537,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
             }
             for(int i=0;i<9;i++){
                 if (*(chessboard+i2*size+j2)==piece[i]){
-                    printf("14coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -546,7 +546,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
         else if (*(chessboard+i1*size+j1)=='F' || *(chessboard+i1*size+j1)=='Q' || *(chessboard+i1*size+j1)=='O' ||*(chessboard+i1*size+j1)=='H'){
             while (i1>i2+1 || j1<j2-1){
                 if (*(chessboard+(i1-1)*size+(j1+1))!=' '){
-                    printf("15coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -555,7 +555,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
             }
             for(int i=0;i<9;i++){
                 if (*(chessboard+i2*size+j2)==piece2[i]){
-                    printf("16coup illegal,reessayez de deplacer une piece\n");
+                    printf("coup illegal,reessayez de deplacer une piece\n");
                     selection_piece(chessboard,joueur);
                     return 1;
                 }
@@ -563,7 +563,7 @@ int verif_deplacement_diagonale(char* chessboard,int i1,int i2,int j1,int j2, in
         }
     }
     if (i2<0 || i2>10 || j2<0 || j2>11){
-        printf("20coup illegal,reessayez de deplacer une piece\n");
+        printf("coup illegal,reessayez de deplacer une piece\n");
         selection_piece(chessboard, joueur);
         return 1;
     }

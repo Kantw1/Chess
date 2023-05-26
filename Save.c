@@ -22,8 +22,3 @@ void sauvegarde(char * chessboard, int j1){
 
 
 }
-
-void charger(){
-
-
-}
