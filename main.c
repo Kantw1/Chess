@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
 #include <string.h>
 #include "chessboard.h"
 #include "tableau.h"
@@ -20,10 +19,15 @@
 
 int main(){
 
-/*
+
 #ifdef _WIN32 // Pour les systèmes Windows
-    system("mode con cols=120 lines=30");
+    //system("mode con cols=120 lines=30");
+    #include <conio.h>
+    #include <windows.h>
+    HWND consoleWindow = GetConsoleWindow();
+    ShowWindow(consoleWindow, SW_MAXIMIZE);
 #elif __linux__ // Pour les systèmes Linux
+    #include <ncurses.h>
     system("printf '\\e[8;30;120t'");
 #elif __APPLE__ // Pour les systèmes macOS
     system("printf '\\e[8;30;120t'");
@@ -31,7 +35,7 @@ int main(){
     // Système d'exploitation non pris en charge
     printf("Impossible d'afficher la console en plein écran sur ce système d'exploitation.\n");
 #endif
-*/
+
 
 
 system("cls || clear");
@@ -62,7 +66,7 @@ printf(ANSI_COLOR_BLUE);
 
 printf(ANSI_COLOR_RESET);
 
-getch();
+getch(); //attend que le joueur utilise la touche entree
 system("cls || clear");
 
 
@@ -234,7 +238,7 @@ fin = fin_de_partie(chessboard);
 
 
 if (fin != 1){
-    printf("Voulez vous sauvegarder la partie? o? n?\n");
+    printf("Voulez vous sauvegarder et quitter la partie? o? n?\n");
     scanf("\n%c",&sauv);
 
     if (sauv == 'o'){
