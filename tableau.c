@@ -46,16 +46,3 @@ void build(char *chessboard){
 
 
 }
-
-void affichetab(char *chessboard){
-
-    for(int i = 0; i< size; i++){
-        for(int j = 0; j<size; j++){
-            printf("  %c  ", *(chessboard+j+12*i));
-        }
-        printf("\n\n");
-
-
-
-    }
-}
